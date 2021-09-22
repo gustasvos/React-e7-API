@@ -17,10 +17,12 @@ function Character() {
     }, [])
 
     const users = userData.map((data, id) => {
-        return <div key={id}>
-            <h2>{data.name}</h2>
+        return <div key={id} className="characters">
+            <p>{data.name}</p>
         </div>
     })
+
+
     return (
         <>
             {users}
