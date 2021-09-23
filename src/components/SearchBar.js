@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
-function Character() {
-    const [userData, setUserData] = useState([])
+function SearchBar() {
+    const [heroList, setheroList] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
 
     useEffect(() => {
         axios.get('https://api.epicsevendb.com/hero')
             .then(res => {
                 console.log(res.data.results)
-                setUserData(res.data.results)
+                setheroList(res.data.results)
             })
             .catch(err => {
                 console.log(err)
@@ -18,16 +18,17 @@ function Character() {
     }, [])
 
 
-
-    const users = userData.map((data, id) => {
+    /*
+    const users = heroList.map((data, id) => {
         return <div key={id} className="characters">
             <p>{data.name}</p>
         </div>
     })
 
+    */
 
     return (
-        <div className="char">
+        <div className="searchbar">
             <input
                 type="text"
                 placeholder="Search..."
@@ -35,7 +36,7 @@ function Character() {
                     setSearchTerm(event.target.value)
                 }}
             />
-            {userData.filter((val) => {
+            {heroList.filter((val) => {
                 if (searchTerm == "") {
                     return val
                 } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -43,8 +44,8 @@ function Character() {
                 }
             }).map((val,key) => {
                 return (
-                    <div className="user" key={key}>
-                        <p>{val.name}</p>
+                    <div className="char" key={key}>
+                        <button>{val.name}</button>
                     </div>
                 )
             })}
@@ -52,4 +53,4 @@ function Character() {
     )
 }
 
-export default Character
+export default SearchBar
