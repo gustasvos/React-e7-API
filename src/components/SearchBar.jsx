@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import './SearchBar.css'
 
 
 function SearchBar() {
@@ -42,10 +43,16 @@ function SearchBar() {
                 } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
                     return val
                 }
-            }).map((val,key) => {
+            }).map((val, key) => {
                 return (
                     <div className="char" key={key}>
-                        <button>{val.name}</button>
+                        <p
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => {
+                                console.log('teste')
+                            }}>
+                            {val.name}
+                        </p>
                     </div>
                 )
             })}

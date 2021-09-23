@@ -1,9 +1,9 @@
 import React from 'react'
-import Character from './components/Characters'
+import SearchBar from './components/SearchBar'
 
 function App() {
     return(
-        <Character />
+        <SearchBar />
     )
 }
 
