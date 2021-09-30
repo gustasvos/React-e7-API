@@ -6,7 +6,7 @@ function CharStatus(props) {
         <div className="main-container">
             <h2>Component2</h2>
 
-            <p>{props.data}</p>
+            {props.data}
         </div>
     )
 }

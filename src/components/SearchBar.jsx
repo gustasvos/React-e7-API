@@ -23,7 +23,7 @@ function SearchBar() {
     // const images2 = heroList.map(item => item.assets)
     // .filter((value, index, self) => self.indexOf(value) === index)
 
-    const images2 = heroList.map(item => {
+    const images = heroList.map(item => {
         return <div>
             <img src={item.assets.image}></img>
         </div>
@@ -37,14 +37,17 @@ function SearchBar() {
     //     </div>
     // })
 
+    const users = heroList.map((data) => {
+        return data.name
+    })
+
+
     const [state, setState] = useState({ data: "" })
 
-    const changeState = () => {
+    const changeState = (val) => {
         setState({
             data:
-                <div className="imagens">
-                    {images2.[1]}
-                </div>
+                images[users.indexOf(val.name)]
         })
     }
 
@@ -76,13 +79,12 @@ function SearchBar() {
                 }
             }).map((val, key) => {
                 return (
-                    <div className="char" key={key}>
-                        <p
-                            style={{ cursor: 'pointer' }}
-                            onClick={changeState}
+                    <div 
+                        className="char"
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => changeState(val)}
                         >
-                            {val.name}
-                        </p>
+                        {val.name}
                     </div>
                 )
             })}
