@@ -1,1 +1,1 @@
-Praticando react
+Praticando react com uma API de Epic Seven

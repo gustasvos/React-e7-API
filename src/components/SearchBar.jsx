@@ -20,9 +20,7 @@ function SearchBar() {
             })
     }, [])
 
-    // const images2 = heroList.map(item => item.assets)
-    // .filter((value, index, self) => self.indexOf(value) === index)
-
+    // imagens dos personagens 
     const images = heroList.map(item => {
         return <div>
             <img src={item.assets.image}></img>
@@ -30,13 +28,7 @@ function SearchBar() {
     }).filter((value, index, self) => self.indexOf(value) === index)
 
 
-
-    // const images = heroList.map((data, id) => {
-    //     return <div key={id} className="characters">
-    //         <img src={data.assets.image}></img>
-    //     </div>
-    // })
-
+    // nomes dos personagens 
     const users = heroList.map((data) => {
         return data.name
     })
@@ -50,16 +42,6 @@ function SearchBar() {
                 images[users.indexOf(val.name)]
         })
     }
-
-    /*
-    const users = heroList.map((data, id) => {
-        return <div key={id} className="characters">
-            <p>{data.name}</p>
-        </div>
-    })
-
-    */
-
 
     return (
         <div className="searchbar">
