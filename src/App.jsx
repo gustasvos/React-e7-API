@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SearchBar from './components/SearchBar'
 
 function App() {
     return(
-        <SearchBar />
+        <div>
+            <SearchBar />
+        </div>
     )
 }
 
