@@ -44,34 +44,39 @@ function SearchBar() {
     }
 
     return (
-        <div className="searchbar">
+        <div className="form__group field">
+            <div className="searchbar">
             <input
                 type="text"
-                placeholder="Search..."
+                className="form__field"
+                placeholder="Search"
+                autoComplete="off"
+                id="name"
                 onChange={(event) => {
                     setSearchTerm(event.target.value)
                 }}
             />
+            <label for="name" className="form__label">Search</label>
 
             {heroList.filter((val) => {
                 if (searchTerm == "") {
                     return null
-                } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                } else if (val.name.toLowerCase().startsWith(searchTerm.toLowerCase())) {
                     return val
                 }
             }).map((val, key) => {
                 return (
-                    <div 
-                        className="char"
-                        style={{ cursor: 'pointer' }}
-                        onClick={() => changeState(val)}
+                        <div
+                            className="char"
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => changeState(val)}
                         >
-                        {val.name}
-                    </div>
+                            {val.name}
+                        </div>
                 )
             })}
-
-            <div className="main-container">
+            </div>
+            <div className="imagem">
                 <CharStatus data={state.data} />
             </div>
         </div>
